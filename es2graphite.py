@@ -265,7 +265,7 @@ def get_metrics():
     thread_pool_metrics = process_thread_pool(args.prefix, thread_pool, cluster_health['cluster_name'])
     submit_to_graphite(thread_pool_metrics)
 
-    indices_stats_url = 'http://%s/_stats?all=true' % get_es_host()
+    indices_stats_url = 'http://%s/_stats' % get_es_host()
     if args.shard_stats:
         indices_stats_url = '%s&level=shards' % indices_stats_url
     elif args.health_level == 'cluster':
